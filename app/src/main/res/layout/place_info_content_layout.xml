@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/place_info_layout"
+    android:layout_below="@+id/place_app_bar"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:padding="16dp"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/placeImage"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_action_del"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_toEndOf="@+id/placeImage"
+            android:layout_alignBottom="@+id/placeImage"
+            android:layout_alignTop="@+id/placeImage"
+            android:layout_marginStart="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/placeTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:text="Title"
+                android:textSize="36sp" />
+
+            <LinearLayout
+                android:id="@+id/ratingSec"
+
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="3dp"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:numStars="5"
+
+                    />
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="13 отзывов"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:singleLine="true"
+                    />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/placeAddressText"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="address"
+                android:textColor="#aaaaaa"
+                android:textSize="18sp"
+                android:singleLine="true"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_marginEnd="16dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.4"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="#aaaaaa"
+                android:text="@string/work_time"
+                android:textSize="15sp"
+                tools:ignore="NestedWeights" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/web_site_text"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:textColor="#aaaaaa"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/phone_number"
+                android:textSize="15sp"
+                android:textColor="#aaaaaa"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:layout_height="100dp"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="#000000"
+                android:textSize="32sp"
+                tools:ignore="NestedWeights" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="#000000"
+                android:textSize="32sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="#000000"
+                android:textSize="32sp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--add comment and photo buttons-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            style="@style/PrimaryFlatButton"
+            android:drawableStart="@drawable/ic_edit_black_24dp"
+            android:text="@string/add_comment"
+            android:textColor="@color/black"
+            android:background="@drawable/button"
+            android:padding="5dp"
+            android:layout_margin="3dp"
+            tools:ignore="NestedWeights" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            style="@style/PrimaryFlatButton"
+            android:background="@drawable/button"
+            android:drawableStart="@drawable/ic_camera_alt_black_24dp"
+            android:padding="5dp"
+            android:layout_margin="3dp"
+            android:text="@string/add_photo"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+</LinearLayout>
