@@ -10,20 +10,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    android:padding="16dp"
     android:background="#ffffff">
 
+    <include layout="@layout/divider"/>
     <RelativeLayout
+        android:layout_marginTop="16dp"
+        android:paddingBottom="8dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/placeImage"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:src="@drawable/ic_action_del"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/place_image"/>
 
         <LinearLayout
             android:orientation="vertical"
@@ -33,27 +38,28 @@
             android:layout_marginStart="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="3">
+            android:weightSum="1">
 
             <TextView
                 android:id="@+id/placeTitleText"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.4"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:text="Title"
-                android:textSize="36sp" />
+                android:text="Eat Sushi"
+                android:textSize="32sp" />
 
             <LinearLayout
                 android:id="@+id/ratingSec"
 
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="0.3">
 
                 <RatingBar
                     android:id="@+id/ratingBar"
+                    android:rating="4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -79,11 +85,10 @@
                 android:id="@+id/placeAddressText"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.3"
                 android:gravity="bottom"
-                android:text="address"
+                android:text="30 просп. Эркиндик, Бишкек"
                 android:textColor="#aaaaaa"
-                android:textSize="18sp"
                 android:singleLine="true"
                 />
         </LinearLayout>
@@ -91,8 +96,11 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginTop="32dp"
+        android:background="@color/grey_100"
+        android:paddingTop="8dp"
         android:layout_marginBottom="16dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1">
@@ -146,23 +154,25 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:textColor="#000000"
-                android:textSize="32sp"
+                android:text="ПН-ПТ: 10:00 - 21:00"
                 tools:ignore="NestedWeights" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:text="www.eatsushi.kg"
+                android:autoLink="web"
+                android:linksClickable="true"
                 android:textColor="#000000"
-                android:textSize="32sp"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:textColor="#000000"
-                android:textSize="32sp"
+                android:text="+996705004440"
+                android:textColor="@color/black"
                 />
 
         </LinearLayout>
@@ -172,6 +182,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingBottom="16dp"
         android:weightSum="1">
 
         <Button

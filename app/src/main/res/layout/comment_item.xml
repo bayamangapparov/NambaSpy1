@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:paddingEnd="16dp"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImageViewInComment"
+        android:src="@drawable/ic_action_del"
+        android:layout_margin="24dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#39a7a4"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Name and comment date-->
+        <LinearLayout
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Джонни Депп"
+                android:textColor="@color/black"
+                android:layout_weight="0.5"/>
+
+            <TextView
+                android:id="@+id/comment_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="17.05.2018"
+                android:gravity="end"
+                android:layout_weight="0.5"/>
+        </LinearLayout>
+
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="3dp"
+            style="?android:attr/ratingBarStyleSmall"
+            android:numStars="5"
+
+            />
+
+        <!--comment text-->
+        <TextView
+            android:layout_marginTop="16dp"
+            android:id="@+id/commentTextView"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            style="?attr/borderlessButtonStyle"
+            android:text="1 Фото"
+            android:drawableStart="@drawable/ic_camera_alt_black_24dp"
+            android:textColor="#aaaaaa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <include layout="@layout/divider" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

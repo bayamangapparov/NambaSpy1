@@ -21,6 +21,8 @@ public class PlaceActivity extends AppCompatActivity {
     RecyclerView placesPhotoRecyclerView;
     PlacePhotosAdapter photosAdapter;
 
+    RecyclerView commentRecyclerView;
+    CommentsAdapter commentsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,31 @@ public class PlaceActivity extends AppCompatActivity {
         initPhotoRecyclerView();
         initAndSetPhotos();
 
+        initCommentRecyclerView();
+        initComments();
+
+    }
+
+    void initCommentRecyclerView() {
+        commentRecyclerView = findViewById(R.id.comment_rv);
+        commentsAdapter = new CommentsAdapter(this);
+        commentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        commentRecyclerView.setAdapter(commentsAdapter);
+
+    }
+
+    void initComments() {
+
+        User user = new User("Джонни", "Депп", R.drawable.johny);
+
+        Comment comment = new Comment("Начиная с Android 3.0, в системе появилась возможность создавать всплывающее меню, привязанное к элементу View. Меню реализовано в виде модального окна, которое отображается снизу о", "13.12.2017", 4, user);
+
+        List<Comment> comments = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            comments.add(comment);
+        }
+
+        commentsAdapter.setComments(comments);
     }
 
     void initPhotoRecyclerView(){
@@ -70,8 +97,11 @@ public class PlaceActivity extends AppCompatActivity {
     void initAndSetPhotos(){
         List<Integer> photos = new ArrayList<>();
 
-        for (int i = 0; i< 10; i++)
-        photos.add(R.drawable.ic_action_del);
+        for (int i = 0; i< 4; i++) {
+            photos.add(R.drawable.image1);
+            photos.add(R.drawable.image2);
+            photos.add(R.drawable.image3);
+        }
 
         photosAdapter.setPhotos(photos);
 

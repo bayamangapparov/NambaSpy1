@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class PlacePhotosAdapter extends RecyclerView.Adapter<PlacePhotosAdapter.PlacePhotoViewHolder>{
@@ -40,7 +42,11 @@ public class PlacePhotosAdapter extends RecyclerView.Adapter<PlacePhotosAdapter.
     public void onBindViewHolder(@NonNull PlacePhotoViewHolder holder, int position) {
 
         if (photos != null) {
-            holder.placeImageView.setImageResource(photos.get(position));
+            Picasso.get()
+                    .load(photos.get(position))
+                    .resize(64, 64)
+                    .into(holder.placeImageView);
+
         } else {
         }
     }
