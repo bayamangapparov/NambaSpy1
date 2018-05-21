@@ -1,6 +1,8 @@
 package com.namba.nambaspy1;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -114,5 +116,14 @@ public class PlaceActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    void onClickAddReviewButton(View view) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        ReviewFullscreenDialogFragment newFragment = new ReviewFullscreenDialogFragment();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.add(android.R.id.content, newFragment).addToBackStack(null).commit();
     }
 }
