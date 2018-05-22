@@ -1,11 +1,28 @@
 <resources>
-    <string name="app_name">NambaSpy1</string>
-    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="app_name"> Namba Spy</string>
+    <string name="title_activity_navigation">NambaSpy</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="android_studio">Android Studio</string>
-    <string name="android_studio_android_com">android.studio@android.com</string>
+    <string name="android_studio">Джонни Депп</string>
+    <string name="android_studio_android_com">nambaspy@gmail.com</string>
+    <string name="my_comment">Мои отзывы</string>
+    <string name="my_images">Мои фотографии</string>
+    <string name="write_comment">Написать отзыв</string>
+    <string name="setting">Настройке</string>
+    <string name="lang_interface">Язык интерфейса</string>
+    <string name="add_place">Добавить заведение</string>
+    <string name="logout">Выход</string>
+    <string name="userName">userName</string>
+    <string name="searchHint">Поиск по названию заведение</string>
+    <string name="chayhana">Чайхана</string>
+    <string name="stolovy">Столовые</string>
+    <string name="cafe">Кафе</string>
+    <string name="pub">Бары</string>
+    <string name="restoraunts">Рестораны</string>
+    <string name="fastfood">Фастфуд</string>
+    <string name="cofeyny">Кофейни</string>
+    <string name="another">Другие</string>
 </resources>
