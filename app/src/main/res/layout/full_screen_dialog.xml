@@ -67,7 +67,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <RatingBar
+
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/reviewRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stepSize="1"
+                    style="@style/Widget.MaterialRatingBar.RatingBar" />
+
+                <!--<RatingBar
                     android:id="@+id/ratingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -78,8 +86,9 @@
                     style="@style/customRatingBar"
                     android:progressBackgroundTint="@color/grey_500"
                     android:numStars="5"
-                    />
+                    />-->
                 <TextView
+                    android:id="@+id/ratingBarStateTextView"
                     android:text="хорошо"
                     android:gravity="end|center_horizontal"
                     android:layout_width="match_parent"

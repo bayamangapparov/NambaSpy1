@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -17,12 +18,17 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
+
 import static android.app.Activity.RESULT_OK;
 
 public class ReviewFullscreenDialogFragment extends DialogFragment {
@@ -32,6 +38,8 @@ public class ReviewFullscreenDialogFragment extends DialogFragment {
     private List<Uri> choosenImages;
 
     private ImageButton addPhotoButton;
+    MaterialRatingBar mRatingBar;
+    private TextView ratingBarStateTextView;
 
     public static final int RESULT_LOAD_IMG = 1;
     @Nullable
@@ -45,6 +53,31 @@ public class ReviewFullscreenDialogFragment extends DialogFragment {
             }
         });
 
+        ratingBarStateTextView = rootView.findViewById(R.id.ratingBarStateTextView);
+        mRatingBar = rootView.findViewById(R.id.reviewRatingBar);
+        mRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                switch ((int) rating) {
+                    case 1:
+                        ratingBarStateTextView.setText("Ужасное место");
+                        break;
+                    case 2:
+                        ratingBarStateTextView.setText("Не рекомендую");
+                        break;
+                    case 3:
+                        ratingBarStateTextView.setText("Можно поесть");
+                        break;
+                    case 4:
+                        ratingBarStateTextView.setText("Хорошое место");
+                        break;
+                    case 5:
+                        ratingBarStateTextView.setText("Отличное место");
+                        break;
+
+                }
+            }
+        });
         addPhotoButton =(rootView.findViewById(R.id.button_add_photo));
         addPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,8 +103,7 @@ public class ReviewFullscreenDialogFragment extends DialogFragment {
 
 
     void getImageFromGallery() {
-        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-        photoPickerIntent.setType("image/*");
+        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(photoPickerIntent, RESULT_LOAD_IMG);
     }
 

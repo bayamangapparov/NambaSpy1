@@ -47,7 +47,7 @@
                 android:layout_weight="0.4"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:text="Eat Sushi"
+                android:text=""
                 android:textSize="32sp" />
 
             <LinearLayout

@@ -10,7 +10,8 @@
         android:id="@+id/place_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
 
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -18,8 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-            app:titleEnabled="false"
-
+            app:expandedTitleGravity="top"
+            app:expandedTitleMarginStart="128dp"
+            app:expandedTitleMarginTop="76dp"
+            app:expandedTitleTextAppearance="@style/TextAppearance.Shrine.Logo"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.CollapsingToolbar.Title"
             >
 
             <include
@@ -34,6 +38,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
                 app:layout_collapseMode="pin"
+                app:title="Eat Sushi"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -46,8 +51,9 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include layout="@layout/divider" />
 
         <include
             android:layout_width="match_parent"
