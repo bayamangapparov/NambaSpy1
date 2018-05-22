@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlaceActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/place_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
+
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_place_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:expandedTitleGravity="top"
+            app:expandedTitleMarginStart="128dp"
+            app:expandedTitleMarginTop="76dp"
+            app:expandedTitleTextAppearance="@style/TextAppearance.Shrine.Logo"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.CollapsingToolbar.Title"
+            >
+
+            <include
+                layout="@layout/place_info_content_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?attr/actionBarSize" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/place_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_collapseMode="pin"
+                app:title="Eat Sushi"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include layout="@layout/divider" />
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/photo_gorizontal_list" />
+
+
+        <include
+            android:layout_marginTop="8dp"
+            layout="@layout/comment_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
