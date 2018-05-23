@@ -104,7 +104,7 @@ public class NavigationActivity extends AppCompatActivity
             @Override
             public void onItemClick(int position) {
 
-                startActivity(new Intent(getApplicationContext(), SubCategoryActivity.class));
+                startActivity(new Intent(getApplicationContext(), PlaceActivity.class));
             }
 
             @Override
