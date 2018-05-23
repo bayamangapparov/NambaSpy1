@@ -33,6 +33,7 @@
     <string name="another">Другие</string>
     <string name="required_information">Обязательная информация</string>
     <string name="optional">Дополнительно (не обязательно)</string>
+    <string name="title_another">Раздел в разработке</string>
 
     <string-array name="categoryList">
         <item>Кафе</item>
