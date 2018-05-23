@@ -15,8 +15,17 @@ import java.util.List;
 
 public class NearPlaceAdapter extends RecyclerView.Adapter<NearPlaceAdapter.NearPlaceViewHolder> {
 
+    public  interface ItemClickListner{
+        void onItemClick(int position);
+        void onItemLongClick(int position);
+    }
+
+
+    private ItemClickListner itemClickListner;
     private List<NearPlace> nearPlaceList;
     private LayoutInflater mInflater;
+
+
 
 
     public NearPlaceAdapter(Context context) {
@@ -45,6 +54,9 @@ public class NearPlaceAdapter extends RecyclerView.Adapter<NearPlaceAdapter.Near
         notifyDataSetChanged();
     }
 
+    public void setItemClickListner(ItemClickListner itemClickListner) {
+        this.itemClickListner = itemClickListner;
+    }
 
     @Override
     public int getItemCount() {
@@ -61,8 +73,25 @@ public class NearPlaceAdapter extends RecyclerView.Adapter<NearPlaceAdapter.Near
             super(itemView);
             titleView = itemView.findViewById(R.id.placeTitleText);
             placeImageView = itemView.findViewById(R.id.placeImage);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    itemClickListner.onItemClick(getAdapterPosition());
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    itemClickListner.onItemLongClick(getAdapterPosition());
+                    return false;
+                }
+            });
         }
     }
+
+
 
 
 }

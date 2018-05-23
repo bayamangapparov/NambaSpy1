@@ -1,6 +1,7 @@
 package com.namba.nambaspy1;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -31,7 +32,6 @@ public class NavigationActivity extends AppCompatActivity
     List<Category>categoryList;
 
     //Near place RecycleView
-
     private RecyclerView nearPlaceRecycleView;
     private NearPlaceAdapter nearPlaceAdapter;
     List<NearPlace> nearPlaceList;
@@ -100,6 +100,19 @@ public class NavigationActivity extends AppCompatActivity
         nearPlaceAdapter = new NearPlaceAdapter(this);
         nearPlaceRecycleView.setAdapter(nearPlaceAdapter);
 
+        nearPlaceAdapter.setItemClickListner(new NearPlaceAdapter.ItemClickListner() {
+            @Override
+            public void onItemClick(int position) {
+
+                startActivity(new Intent(getApplicationContext(), SubCategoryActivity.class));
+            }
+
+            @Override
+            public void onItemLongClick(int position) {
+
+            }
+        });
+
     }
 
     void initNearPlaceList(){
@@ -124,12 +137,6 @@ public class NavigationActivity extends AppCompatActivity
         }
     }
 
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation, menu);
-        return true;
-    } */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
