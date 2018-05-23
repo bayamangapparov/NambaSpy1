@@ -18,13 +18,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, NavigationActivity.class);
         startActivity(intent);
 
-    /*    //circle image
-        Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.depp);
-        Bitmap circularBitmap = ImageConverter.getRoundedCornerBitmap(bitmap, 100);
-
-        ImageView circularImageView = (ImageView) findViewById(R.id.imageAvatar);
-        circularImageView.setImageBitmap(circularBitmap);
-*/
     }
     
     public void onClick(View view) {

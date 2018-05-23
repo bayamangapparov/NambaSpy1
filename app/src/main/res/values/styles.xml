@@ -78,4 +78,29 @@
     </style>
 
 
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+<!--
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+-->
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+
+
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme2.AddPlace" parent="" >
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/frame</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
 </resources>

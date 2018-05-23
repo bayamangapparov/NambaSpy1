@@ -35,9 +35,14 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".SubCategoryActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
+        <activity
+            android:name=".SubCategoryActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".AddPlaceActivity"
+            android:theme="@style/AppTheme2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
     </application>
 

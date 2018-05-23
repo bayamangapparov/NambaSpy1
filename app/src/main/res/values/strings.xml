@@ -31,4 +31,26 @@
     <string name="fastfood">Фастфуд</string>
     <string name="cofeyny">Кофейни</string>
     <string name="another">Другие</string>
+    <string name="required_information">Обязательная информация</string>
+    <string name="optional">Дополнительно (не обязательно)</string>
+
+    <string-array name="categoryList">
+        <item>Кафе</item>
+        <item>Бары</item>
+        <item>Рестораны</item>
+        <item>Кофейни</item>
+        <item>Фастфуд</item>
+        <item>Столовые</item>
+        <item>Чайхана</item>
+    </string-array>
+
+    <string-array name="cityList">
+        <item>Бишкек</item>
+        <item>Ош</item>
+        <item>Баткен</item>
+        <item>Джалал-Абад</item>
+        <item>Талас</item>
+        <item>Нарын</item>
+        <item>Каракол</item>
+    </string-array>
 </resources>

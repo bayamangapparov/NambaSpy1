@@ -34,9 +34,10 @@ private  final String TAG = NavigationActivity.class.getSimpleName();
     List<Category>categoryList;
 
     //Near place RecycleView
-    private RecyclerView nearPlaceRecyclerView;
+    private RecyclerView nearPlaceRecycleView;
     private PlaceAdapter placeAdapter;
     List<Place> placeList;
+
 
 
     //Counter in drawer menu
@@ -127,6 +128,7 @@ private  final String TAG = NavigationActivity.class.getSimpleName();
         placeAdapter = new PlaceAdapter(this);
         nearPlaceRecyclerView.setAdapter(placeAdapter);
 
+
         placeAdapter.setItemClickListener(new PlaceAdapter.ItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -143,19 +145,14 @@ private  final String TAG = NavigationActivity.class.getSimpleName();
     }
 
     void initNearPlaceList(){
-        placeList = new ArrayList<>();
-        placeList.add(new Place("Ормон хан", R.drawable.chay_ic));
-        placeList.add(new Place("Гурман", R.drawable.fastfood_ic));
-        placeList.add(new Place("Фаиза", R.drawable.chay_ic));
-        placeList.add(new Place("Таксым", R.drawable.chay_ic));
-        placeList.add(new Place("Обед.кг", R.drawable.restaurant));
-        placeList.add(new Place("Ормон хан", R.drawable.chay_ic));
+        placeList = new ArrayList<>()
         placeList.add(new Place("Фаиза", R.drawable.chay_ic));
         placeList.add(new Place("Таксым", R.drawable.chay_ic));
         placeList.add(new Place("Обед.кг", R.drawable.restaurant));
         placeList.add(new Place("Фаиза", R.drawable.chay_ic));
         placeList.add(new Place("Таксым", R.drawable.chay_ic));
         placeList.add(new Place("Обед.кг", R.drawable.restaurant));
+
 
         placeAdapter.setPlaceList(placeList);
     }

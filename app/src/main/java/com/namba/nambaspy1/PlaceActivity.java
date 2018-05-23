@@ -67,6 +67,7 @@ public class PlaceActivity extends AppCompatActivity {
 
     void initCommentRecyclerView() {
         commentRecyclerView = findViewById(R.id.comment_rv);
+        commentRecyclerView.setNestedScrollingEnabled(false);
         commentsAdapter = new CommentsAdapter(this);
         commentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         commentRecyclerView.setAdapter(commentsAdapter);

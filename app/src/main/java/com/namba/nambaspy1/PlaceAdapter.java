@@ -14,7 +14,8 @@ import java.util.List;
 
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder> {
 
-    public interface ItemClickListener {
+
+    public  interface ItemClickListener {
         void onItemClick(int position);
 
         void onItemLongClick(int position);
@@ -24,7 +25,6 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
     private ItemClickListener itemClickListener;
     private List<Place> placeList;
     private LayoutInflater mInflater;
-
 
     public PlaceAdapter(Context context) {
         this.mInflater = LayoutInflater.from(context);
@@ -64,6 +64,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
 
     public class PlaceViewHolder extends RecyclerView.ViewHolder {
         ImageView placeImageView;
+
         TextView titleView;
 
         public PlaceViewHolder(View itemView) {
@@ -87,6 +88,5 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
             });
         }
     }
-
 
 }
