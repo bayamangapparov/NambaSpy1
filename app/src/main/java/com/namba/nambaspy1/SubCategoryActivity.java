@@ -65,6 +65,24 @@ public class SubCategoryActivity extends AppCompatActivity {
         subCategoryList.add(new NearPlace("Таксым", R.drawable.chay_ic));
         subCategoryList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
         subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Гурман", R.drawable.fastfood_ic));
+        subCategoryList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Таксым", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
+        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Гурман", R.drawable.fastfood_ic));
+        subCategoryList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Таксым", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
+        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Гурман", R.drawable.fastfood_ic));
+        subCategoryList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Таксым", R.drawable.chay_ic));
+        subCategoryList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
+        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
 
         subCategoryAdapter.setNearPlaceList(subCategoryList);
 

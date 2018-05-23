@@ -123,6 +123,12 @@ public class NavigationActivity extends AppCompatActivity
         nearPlaceList.add(new NearPlace("Таксым", R.drawable.chay_ic));
         nearPlaceList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
         nearPlaceList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
+        nearPlaceList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
+        nearPlaceList.add(new NearPlace("Таксым", R.drawable.chay_ic));
+        nearPlaceList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
+        nearPlaceList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
+        nearPlaceList.add(new NearPlace("Таксым", R.drawable.chay_ic));
+        nearPlaceList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
 
         nearPlaceAdapter.setNearPlaceList(nearPlaceList);
     }
