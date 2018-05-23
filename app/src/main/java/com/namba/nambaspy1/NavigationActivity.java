@@ -4,9 +4,6 @@ package com.namba.nambaspy1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -33,8 +30,8 @@ public class NavigationActivity extends AppCompatActivity
 
     //Near place RecycleView
     private RecyclerView nearPlaceRecycleView;
-    private NearPlaceAdapter nearPlaceAdapter;
-    List<NearPlace> nearPlaceList;
+    private PlaceAdapter placeAdapter;
+    List<Place> placeList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,10 +94,10 @@ public class NavigationActivity extends AppCompatActivity
     void initPlaceRecyclerView(){
         nearPlaceRecycleView = findViewById(R.id.near_recycler_view);
         nearPlaceRecycleView.setLayoutManager(new GridLayoutManager(this, 1));
-        nearPlaceAdapter = new NearPlaceAdapter(this);
-        nearPlaceRecycleView.setAdapter(nearPlaceAdapter);
+        placeAdapter = new PlaceAdapter(this);
+        nearPlaceRecycleView.setAdapter(placeAdapter);
 
-        nearPlaceAdapter.setItemClickListner(new NearPlaceAdapter.ItemClickListner() {
+        placeAdapter.setItemClickListener(new PlaceAdapter.ItemClickListener() {
             @Override
             public void onItemClick(int position) {
 
@@ -116,15 +113,15 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     void initNearPlaceList(){
-        nearPlaceList = new ArrayList<>();
-        nearPlaceList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Гурман", R.drawable.fastfood_ic));
-        nearPlaceList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Таксым", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
-        nearPlaceList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
+        placeList = new ArrayList<>();
+        placeList.add(new Place("Ормон хан", R.drawable.chay_ic));
+        placeList.add(new Place("Гурман", R.drawable.fastfood_ic));
+        placeList.add(new Place("Фаиза", R.drawable.chay_ic));
+        placeList.add(new Place("Таксым", R.drawable.chay_ic));
+        placeList.add(new Place("Обед.кг", R.drawable.restaurant));
+        placeList.add(new Place("Ормон хан", R.drawable.chay_ic));
 
-        nearPlaceAdapter.setNearPlaceList(nearPlaceList);
+        placeAdapter.setPlaceList(placeList);
     }
 
     @Override

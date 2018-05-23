@@ -2,7 +2,6 @@ package com.namba.nambaspy1;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,63 +12,62 @@ import android.widget.TextView;
 import java.util.List;
 
 
-public class NearPlaceAdapter extends RecyclerView.Adapter<NearPlaceAdapter.NearPlaceViewHolder> {
+public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder> {
 
-    public  interface ItemClickListner{
+    public  interface ItemClickListener {
         void onItemClick(int position);
         void onItemLongClick(int position);
     }
 
 
-    private ItemClickListner itemClickListner;
-    private List<NearPlace> nearPlaceList;
+    private ItemClickListener itemClickListener;
+    private List<Place> placeList;
     private LayoutInflater mInflater;
 
 
 
 
-    public NearPlaceAdapter(Context context) {
+    public PlaceAdapter(Context context) {
         this.mInflater = LayoutInflater.from(context);
     }
 
 
     @NonNull
     @Override
-    public NearPlaceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PlaceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.recycler_near_item, parent, false);
-        NearPlaceViewHolder nearPlaceViewHolder = new NearPlaceViewHolder(itemView);
 
-        return nearPlaceViewHolder;
+        return new PlaceViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NearPlaceViewHolder holder, int position) {
-        NearPlace nearPlace = nearPlaceList.get(position);
-        holder.placeImageView.setImageResource(nearPlace.getImage());
-        holder.titleView.setText(nearPlace.getTitle());
+    public void onBindViewHolder(@NonNull PlaceViewHolder holder, int position) {
+        Place place = placeList.get(position);
+        holder.placeImageView.setImageResource(place.getImage());
+        holder.titleView.setText(place.getTitle());
     }
 
-    public void setNearPlaceList(List<NearPlace> nearPlaceList) {
-        this.nearPlaceList = nearPlaceList;
+    public void setPlaceList(List<Place> placeList) {
+        this.placeList = placeList;
         notifyDataSetChanged();
     }
 
-    public void setItemClickListner(ItemClickListner itemClickListner) {
-        this.itemClickListner = itemClickListner;
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
     }
 
     @Override
     public int getItemCount() {
-        return nearPlaceList.size();
+        return placeList.size();
 
     }
 
 
-    public class NearPlaceViewHolder extends RecyclerView.ViewHolder {
+    public class PlaceViewHolder extends RecyclerView.ViewHolder {
         ImageView placeImageView;
         TextView  titleView;
 
-    public   NearPlaceViewHolder(View itemView) {
+    public PlaceViewHolder(View itemView) {
             super(itemView);
             titleView = itemView.findViewById(R.id.placeTitleText);
             placeImageView = itemView.findViewById(R.id.placeImage);
@@ -77,14 +75,14 @@ public class NearPlaceAdapter extends RecyclerView.Adapter<NearPlaceAdapter.Near
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    itemClickListner.onItemClick(getAdapterPosition());
+                    itemClickListener.onItemClick(getAdapterPosition());
                 }
             });
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    itemClickListner.onItemLongClick(getAdapterPosition());
+                    itemClickListener.onItemLongClick(getAdapterPosition());
                     return false;
                 }
             });
