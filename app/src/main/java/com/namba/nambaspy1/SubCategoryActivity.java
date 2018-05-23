@@ -1,11 +1,11 @@
 package com.namba.nambaspy1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -14,8 +14,8 @@ import java.util.List;
 public class SubCategoryActivity extends AppCompatActivity {
 
     private RecyclerView subCategoryRecyclerView;
-    private CategoryAdapter subCategoryAdapter;
-    List<Category> subCategoryList;
+    private PlaceAdapter subCategoryAdapter;
+    List<Place> placeList;
 
     private final String TAG = SubCategoryActivity.class.getSimpleName();
 
@@ -52,22 +52,41 @@ public class SubCategoryActivity extends AppCompatActivity {
     void initSubCategoryRecyclerView(){
         subCategoryRecyclerView = findViewById(R.id.subCategory_recycler);
         subCategoryRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        subCategoryAdapter = new CategoryAdapter(this);
+        subCategoryAdapter = new PlaceAdapter(this);
         subCategoryRecyclerView.setAdapter(subCategoryAdapter);
+
+        subCategoryAdapter.setItemClickListener(new PlaceAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                startActivity(new Intent(getApplicationContext(), PlaceActivity.class));
+            }
+
+            @Override
+            public void onItemLongClick(int position) {
+
+            }
+        });
 
     }
 
     void initSubCategoryList(){
-        subCategoryList = new ArrayList<>();
-        subCategoryList.add(new Category("Ормон хан", R.drawable.chay_ic));
-        subCategoryList.add(new Category("Гурман", R.drawable.fastfood_ic));
-        subCategoryList.add(new Category("Фаиза", R.drawable.chay_ic));
-        subCategoryList.add(new Category("Таксым", R.drawable.chay_ic));
-        subCategoryList.add(new Category("Обед.кг", R.drawable.restaurant));
-        subCategoryList.add(new Category("Ормон хан", R.drawable.chay_ic));
+
+        placeList = new ArrayList<>();
+        placeList.add(new Place("Ормон хан", R.drawable.chay_ic));
+        placeList.add(new Place("Гурман", R.drawable.fastfood_ic));
+        placeList.add(new Place("Фаиза", R.drawable.chay_ic));
+        placeList.add(new Place("Таксым", R.drawable.chay_ic));
+        placeList.add(new Place("Обед.кг", R.drawable.restaurant));
+        placeList.add(new Place("Ормон хан", R.drawable.chay_ic));
+        placeList.add(new Place("Фаиза", R.drawable.chay_ic));
+        placeList.add(new Place("Таксым", R.drawable.chay_ic));
+        placeList.add(new Place("Обед.кг", R.drawable.restaurant));
+        placeList.add(new Place("Фаиза", R.drawable.chay_ic));
+        placeList.add(new Place("Таксым", R.drawable.chay_ic));
+        placeList.add(new Place("Обед.кг", R.drawable.restaurant));
 
 
-        subCategoryAdapter.setCategoryList(subCategoryList);
+        subCategoryAdapter.setPlaceList(placeList);
 
     }
 

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -28,15 +27,16 @@ import java.util.List;
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+private  final String TAG = NavigationActivity.class.getSimpleName();
 
     private RecyclerView categoryRecyclerView;
     private CategoryAdapter categoryAdapter;
     List<Category>categoryList;
 
     //Near place RecycleView
-    private RecyclerView nearPlaceRecycleView;
-    private NearPlaceAdapter nearPlaceAdapter;
-    List<NearPlace> nearPlaceList;
+    private RecyclerView nearPlaceRecyclerView;
+    private PlaceAdapter placeAdapter;
+    List<Place> placeList;
 
 
     //Counter in drawer menu
@@ -75,6 +75,7 @@ public class NavigationActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Counter in Drawer menu
 
         myComment=(TextView) MenuItemCompat.getActionView(navigationView.getMenu().
                 findItem(R.id.nav_comment_marking));
@@ -90,6 +91,20 @@ public class NavigationActivity extends AppCompatActivity
         categoryRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         categoryAdapter =  new CategoryAdapter(this);
         categoryRecyclerView.setAdapter(categoryAdapter);
+
+        categoryAdapter.setSubCategoryItemClickListener(new CategoryAdapter.SubCategoryItemClickListener() {
+            @Override
+            public void subOnItemClick(int position) {
+
+                startActivity(new Intent(getApplicationContext(), SubCategoryActivity.class));
+            }
+
+            @Override
+            public void subonItemLongClick(int position) {
+
+            }
+
+        });
     }
 
     void initCategoryList() {
@@ -107,12 +122,12 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     void initPlaceRecyclerView(){
-        nearPlaceRecycleView = findViewById(R.id.near_recycler_view);
-        nearPlaceRecycleView.setLayoutManager(new GridLayoutManager(this, 1));
-        nearPlaceAdapter = new NearPlaceAdapter(this);
-        nearPlaceRecycleView.setAdapter(nearPlaceAdapter);
+        nearPlaceRecyclerView = findViewById(R.id.near_recycler_view);
+        nearPlaceRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        placeAdapter = new PlaceAdapter(this);
+        nearPlaceRecyclerView.setAdapter(placeAdapter);
 
-        nearPlaceAdapter.setItemClickListner(new NearPlaceAdapter.ItemClickListner() {
+        placeAdapter.setItemClickListener(new PlaceAdapter.ItemClickListener() {
             @Override
             public void onItemClick(int position) {
 
@@ -128,21 +143,21 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     void initNearPlaceList(){
-        nearPlaceList = new ArrayList<>();
-        nearPlaceList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Гурман", R.drawable.fastfood_ic));
-        nearPlaceList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Таксым", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
-        nearPlaceList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Таксым", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
-        nearPlaceList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Таксым", R.drawable.chay_ic));
-        nearPlaceList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
+        placeList = new ArrayList<>();
+        placeList.add(new Place("Ормон хан", R.drawable.chay_ic));
+        placeList.add(new Place("Гурман", R.drawable.fastfood_ic));
+        placeList.add(new Place("Фаиза", R.drawable.chay_ic));
+        placeList.add(new Place("Таксым", R.drawable.chay_ic));
+        placeList.add(new Place("Обед.кг", R.drawable.restaurant));
+        placeList.add(new Place("Ормон хан", R.drawable.chay_ic));
+        placeList.add(new Place("Фаиза", R.drawable.chay_ic));
+        placeList.add(new Place("Таксым", R.drawable.chay_ic));
+        placeList.add(new Place("Обед.кг", R.drawable.restaurant));
+        placeList.add(new Place("Фаиза", R.drawable.chay_ic));
+        placeList.add(new Place("Таксым", R.drawable.chay_ic));
+        placeList.add(new Place("Обед.кг", R.drawable.restaurant));
 
-        nearPlaceAdapter.setNearPlaceList(nearPlaceList);
+        placeAdapter.setPlaceList(placeList);
     }
 
     @Override
