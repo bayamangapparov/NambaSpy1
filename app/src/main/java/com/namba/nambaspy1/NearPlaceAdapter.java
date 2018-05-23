@@ -15,8 +15,9 @@ import java.util.List;
 
 public class NearPlaceAdapter extends RecyclerView.Adapter<NearPlaceAdapter.NearPlaceViewHolder> {
 
-    public  interface ItemClickListner{
+    public interface ItemClickListner {
         void onItemClick(int position);
+
         void onItemLongClick(int position);
     }
 
@@ -24,8 +25,6 @@ public class NearPlaceAdapter extends RecyclerView.Adapter<NearPlaceAdapter.Near
     private ItemClickListner itemClickListner;
     private List<NearPlace> nearPlaceList;
     private LayoutInflater mInflater;
-
-
 
 
     public NearPlaceAdapter(Context context) {
@@ -67,9 +66,9 @@ public class NearPlaceAdapter extends RecyclerView.Adapter<NearPlaceAdapter.Near
 
     public class NearPlaceViewHolder extends RecyclerView.ViewHolder {
         ImageView placeImageView;
-        TextView  titleView;
+        TextView titleView;
 
-    public   NearPlaceViewHolder(View itemView) {
+        public NearPlaceViewHolder(View itemView) {
             super(itemView);
             titleView = itemView.findViewById(R.id.placeTitleText);
             placeImageView = itemView.findViewById(R.id.placeImage);
@@ -90,8 +89,6 @@ public class NearPlaceAdapter extends RecyclerView.Adapter<NearPlaceAdapter.Near
             });
         }
     }
-
-
 
 
 }

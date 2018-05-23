@@ -14,8 +14,8 @@ import java.util.List;
 public class SubCategoryActivity extends AppCompatActivity {
 
     private RecyclerView subCategoryRecyclerView;
-    private NearPlaceAdapter subCategoryAdapter;
-    List<NearPlace> subCategoryList;
+    private CategoryAdapter subCategoryAdapter;
+    List<Category> subCategoryList;
 
     private final String TAG = SubCategoryActivity.class.getSimpleName();
 
@@ -52,39 +52,22 @@ public class SubCategoryActivity extends AppCompatActivity {
     void initSubCategoryRecyclerView(){
         subCategoryRecyclerView = findViewById(R.id.subCategory_recycler);
         subCategoryRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        subCategoryAdapter = new NearPlaceAdapter(this);
+        subCategoryAdapter = new CategoryAdapter(this);
         subCategoryRecyclerView.setAdapter(subCategoryAdapter);
 
     }
 
     void initSubCategoryList(){
         subCategoryList = new ArrayList<>();
-        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Гурман", R.drawable.fastfood_ic));
-        subCategoryList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Таксым", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
-        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Гурман", R.drawable.fastfood_ic));
-        subCategoryList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Таксым", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
-        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Гурман", R.drawable.fastfood_ic));
-        subCategoryList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Таксым", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
-        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Гурман", R.drawable.fastfood_ic));
-        subCategoryList.add(new NearPlace("Фаиза", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Таксым", R.drawable.chay_ic));
-        subCategoryList.add(new NearPlace("Обед.кг", R.drawable.restaurant));
-        subCategoryList.add(new NearPlace("Ормон хан", R.drawable.chay_ic));
+        subCategoryList.add(new Category("Ормон хан", R.drawable.chay_ic));
+        subCategoryList.add(new Category("Гурман", R.drawable.fastfood_ic));
+        subCategoryList.add(new Category("Фаиза", R.drawable.chay_ic));
+        subCategoryList.add(new Category("Таксым", R.drawable.chay_ic));
+        subCategoryList.add(new Category("Обед.кг", R.drawable.restaurant));
+        subCategoryList.add(new Category("Ормон хан", R.drawable.chay_ic));
 
-        subCategoryAdapter.setNearPlaceList(subCategoryList);
+
+        subCategoryAdapter.setCategoryList(subCategoryList);
 
     }
 

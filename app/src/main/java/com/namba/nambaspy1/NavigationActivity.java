@@ -2,13 +2,13 @@ package com.namba.nambaspy1;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +16,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,10 @@ public class NavigationActivity extends AppCompatActivity
     private NearPlaceAdapter nearPlaceAdapter;
     List<NearPlace> nearPlaceList;
 
+
+    //Counter in drawer menu
+    TextView myComment, myPicture;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +55,6 @@ public class NavigationActivity extends AppCompatActivity
         //RecyclerView nearPlace
         initPlaceRecyclerView();
         initNearPlaceList();
-
-
 
         SearchView searchView = (SearchView) findViewById(R.id.search_view);
         EditText searchEditText = (EditText)searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
@@ -71,6 +75,14 @@ public class NavigationActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
+        myComment=(TextView) MenuItemCompat.getActionView(navigationView.getMenu().
+                findItem(R.id.nav_comment_marking));
+
+        myPicture = (TextView) MenuItemCompat.getActionView(navigationView.getMenu().
+                findItem(R.id.nav_images));
+
+        initializeCountDrawer();
     }
 
     void initCategoryRecycleView(){
@@ -104,7 +116,7 @@ public class NavigationActivity extends AppCompatActivity
             @Override
             public void onItemClick(int position) {
 
-                startActivity(new Intent(getApplicationContext(), SubCategoryActivity.class));
+                startActivity(new Intent(getApplicationContext(), PlaceActivity.class));
             }
 
             @Override
@@ -188,6 +200,19 @@ public class NavigationActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void initializeCountDrawer(){
+        //Gravity property aligns the text
+        myComment.setGravity(Gravity.CENTER_VERTICAL);
+        myComment.setTypeface(null, Typeface.BOLD);
+        myComment.setTextColor(getResources().getColor(R.color.Black));
+        myComment.setText("99+");
+        myPicture.setGravity(Gravity.CENTER_VERTICAL);
+        myPicture.setTypeface(null,Typeface.BOLD);
+        myPicture.setTextColor(getResources().getColor(R.color.Black));
+//count is added
+        myPicture.setText("7");
     }
 
 }
