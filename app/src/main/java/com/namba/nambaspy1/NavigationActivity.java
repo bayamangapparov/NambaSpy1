@@ -34,7 +34,7 @@ private  final String TAG = NavigationActivity.class.getSimpleName();
     List<Category>categoryList;
 
     //Near place RecycleView
-    private RecyclerView nearPlaceRecycleView;
+    private RecyclerView nearPlaceRecyclerView;
     private PlaceAdapter placeAdapter;
     List<Place> placeList;
 
@@ -145,7 +145,7 @@ private  final String TAG = NavigationActivity.class.getSimpleName();
     }
 
     void initNearPlaceList(){
-        placeList = new ArrayList<>()
+        placeList = new ArrayList<>();
         placeList.add(new Place("Фаиза", R.drawable.chay_ic));
         placeList.add(new Place("Таксым", R.drawable.chay_ic));
         placeList.add(new Place("Обед.кг", R.drawable.restaurant));
@@ -196,7 +196,7 @@ private  final String TAG = NavigationActivity.class.getSimpleName();
         if (id == R.id.write_comment) {
             // Handle the camera action
         } else if (id == R.id.add_place) {
-
+            startActivity(new Intent(getApplicationContext(), AddPlaceActivity.class));
         } else if (id == R.id.lang_interface) {
 
         } else if (id == R.id.menu_setting) {

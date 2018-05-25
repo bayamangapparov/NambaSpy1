@@ -24,7 +24,7 @@ public class PlacePhotosAdapter extends RecyclerView.Adapter<PlacePhotosAdapter.
     }
 
     private LayoutInflater inflater;
-    private List<Integer> photos;
+    private List<String> photos;
 
     PlacePhotosAdapter(Context context){
         inflater = LayoutInflater.from(context);
@@ -58,7 +58,7 @@ public class PlacePhotosAdapter extends RecyclerView.Adapter<PlacePhotosAdapter.
         else return 0;
     }
 
-    public void setPhotos(List<Integer> photos) {
+    public void setPhotos(List<String> photos) {
         this.photos = photos;
         notifyDataSetChanged();
     }

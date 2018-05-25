@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff"
+    android:elevation="4dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -21,6 +22,8 @@
             android:layout_weight="0.5"/>
 
         <Button
+            android:id="@+id/show_all_place_images_button"
+            android:onClick="onClick"
             style="?attr/borderlessButtonStyle"
             android:text="Показать все"
             android:drawableEnd="@drawable/ic_chevron_right"
