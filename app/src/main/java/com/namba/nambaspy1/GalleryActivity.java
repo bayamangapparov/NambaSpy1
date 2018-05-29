@@ -39,6 +39,11 @@ public class GalleryActivity extends AppCompatActivity {
 
     private int mShortAnimationDuration;
     Bitmap bm;
+    ImageView expandedImageView;
+    LinearLayout linearLayout;
+    Rect startBounds;
+    float startScaleFinal;
+    View currentView;
 
 
     RecyclerView recyclerView;
@@ -83,10 +88,10 @@ public class GalleryActivity extends AppCompatActivity {
             mCurrentAnimator.cancel();
         }
 
-        final LinearLayout linearLayout = findViewById(R.id.layou);
+        linearLayout = findViewById(R.id.layou);
         linearLayout.setVisibility(View.VISIBLE);
         // Load the high-resolution "zoomed-in" image.
-        final ImageView expandedImageView = (ImageView) findViewById(
+        expandedImageView = findViewById(
                 R.id.expanded_image);
         //expandedImageView.setImageResource(imageResId);
         Picasso.get()
@@ -95,7 +100,7 @@ public class GalleryActivity extends AppCompatActivity {
 
         // Calculate the starting and ending bounds for the zoomed-in image.
         // This step involves lots of math. Yay, math.
-        final Rect startBounds = new Rect();
+        startBounds = new Rect();
         final Rect finalBounds = new Rect();
         final Point globalOffset = new Point();
 
@@ -175,7 +180,8 @@ public class GalleryActivity extends AppCompatActivity {
         // Upon clicking the zoomed-in image, it should zoom back down
         // to the original bounds and show the thumbnail instead of
         // the expanded image.
-        final float startScaleFinal = startScale;
+        //final float startScaleFinal = startScale;
+        startScaleFinal = startScale;
         expandedImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -227,9 +233,56 @@ public class GalleryActivity extends AppCompatActivity {
     }*/
 
 
+    void hideExtendedImageWithAnimation() {
+        if (mCurrentAnimator != null) {
+            mCurrentAnimator.cancel();
+        }
 
 
+        AnimatorSet set = new AnimatorSet();
+        set.play(ObjectAnimator
+                .ofFloat(expandedImageView, View.X, startBounds.left))
+                .with(ObjectAnimator
+                        .ofFloat(expandedImageView,
+                                View.Y, startBounds.top))
+                .with(ObjectAnimator
+                        .ofFloat(expandedImageView,
+                                View.SCALE_X, startScaleFinal))
+                .with(ObjectAnimator
+                        .ofFloat(expandedImageView,
+                                View.SCALE_Y, startScaleFinal));
+        set.setDuration(mShortAnimationDuration);
+        set.setInterpolator(new DecelerateInterpolator());
+        set.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                currentView.setAlpha(1f);
+                expandedImageView.setVisibility(View.GONE);
+                linearLayout.setVisibility(View.GONE);
+                mCurrentAnimator = null;
+            }
 
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                currentView.setAlpha(1f);
+                expandedImageView.setVisibility(View.GONE);
+                linearLayout.setVisibility(View.GONE);
+                mCurrentAnimator = null;
+            }
+        });
+        set.start();
+        mCurrentAnimator = set;
+    }
+    @Override
+    public void onBackPressed() {
+
+        if (expandedImageView.getVisibility() == View.VISIBLE) {
+            hideExtendedImageWithAnimation();
+
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     public class PlacePicturesGalleryAdapter extends RecyclerView.Adapter<PlacePicturesGalleryAdapter.MyViewHolder> {
 
@@ -287,13 +340,13 @@ public class GalleryActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         zoomImageFromThumb(v, R.drawable.place_image, links.get(getAdapterPosition()));
+                        currentView = v;
                     }
                 });
 
                 itemView.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
-                        zoomImageFromThumb(v, R.drawable.place_image, links.get(getAdapterPosition()));
                         return false;
                     }
                 });
