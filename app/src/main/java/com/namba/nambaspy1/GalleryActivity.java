@@ -11,10 +11,12 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,7 @@ import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.namba.nambaspy1.controller.GalleryPagerAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -35,6 +38,8 @@ import java.util.List;
 
 public class GalleryActivity extends AppCompatActivity {
 
+    private static final String TAG = GalleryActivity.class.getSimpleName();
+
     private Animator mCurrentAnimator;
 
     private int mShortAnimationDuration;
@@ -45,6 +50,9 @@ public class GalleryActivity extends AppCompatActivity {
     float startScaleFinal;
     View currentView;
 
+    ViewPager viewPager;
+    GalleryPagerAdapter pagerAdapter;
+    List<String> imagesList;
 
     RecyclerView recyclerView;
     PlacePicturesGalleryAdapter adapter;
@@ -55,12 +63,20 @@ public class GalleryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gallery);
 
 
+
+
         mShortAnimationDuration = getResources().getInteger(
                 android.R.integer.config_shortAnimTime);
 
 
         initImageRecyclerView();
         initImages();
+
+        viewPager = findViewById(R.id.imageViewPager);
+        pagerAdapter = new GalleryPagerAdapter(this, imagesList);
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setOffscreenPageLimit(20);
+
     }
 
     void initImageRecyclerView() {
@@ -79,9 +95,10 @@ public class GalleryActivity extends AppCompatActivity {
         images.add("https://media-cdn.tripadvisor.com/media/photo-s/04/8e/45/77/ametist-cafe-restaurant.jpg");
 
         adapter.setLinks(images);
+        imagesList = images;
     }
 
-    private void zoomImageFromThumb(final View thumbView, int imageResId, String link) {
+    private void zoomImageFromThumb(final View thumbView, String link) {
         // If there's an animation in progress, cancel it
         // immediately and proceed with this one.
         if (mCurrentAnimator != null) {
@@ -91,11 +108,12 @@ public class GalleryActivity extends AppCompatActivity {
         linearLayout = findViewById(R.id.layou);
         linearLayout.setVisibility(View.VISIBLE);
         // Load the high-resolution "zoomed-in" image.
-        expandedImageView = findViewById(
-                R.id.expanded_image);
+        /*expandedImageView = findViewById(
+                R.id.expanded_image);*/
         //expandedImageView.setImageResource(imageResId);
         Picasso.get()
                 .load(link)
+                .placeholder(R.drawable.place_image)
                 .into(expandedImageView);
 
         // Calculate the starting and ending bounds for the zoomed-in image.
@@ -110,8 +128,10 @@ public class GalleryActivity extends AppCompatActivity {
         // bounds, since that's the origin for the positioning animation
         // properties (X, Y).
         thumbView.getGlobalVisibleRect(startBounds);
+
         findViewById(R.id.container)
                 .getGlobalVisibleRect(finalBounds, globalOffset);
+
         startBounds.offset(-globalOffset.x, -globalOffset.y);
         finalBounds.offset(-globalOffset.x, -globalOffset.y);
 
@@ -227,10 +247,6 @@ public class GalleryActivity extends AppCompatActivity {
             }
         });
     }
-/*
-    public void onClickPh(View view) {
-        zoomImageFromThumb(view, R.drawable.place_image);
-    }*/
 
 
     void hideExtendedImageWithAnimation() {
@@ -276,9 +292,15 @@ public class GalleryActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        if (expandedImageView.getVisibility() == View.VISIBLE) {
+/*        if (expandedImageView.getVisibility() == View.VISIBLE) {
             hideExtendedImageWithAnimation();
 
+        } else {
+            super.onBackPressed();
+        }*/
+
+        if (linearLayout.getVisibility() == View.VISIBLE) {
+            linearLayout.setVisibility(View.GONE);
         } else {
             super.onBackPressed();
         }
@@ -339,7 +361,10 @@ public class GalleryActivity extends AppCompatActivity {
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        zoomImageFromThumb(v, R.drawable.place_image, links.get(getAdapterPosition()));
+                        //zoomImageFromThumb(v, links.get(getAdapterPosition()));
+                        viewPager.setCurrentItem(getAdapterPosition(), false);
+                        linearLayout = findViewById(R.id.layou);
+                        linearLayout.setVisibility(View.VISIBLE);
                         currentView = v;
                     }
                 });
