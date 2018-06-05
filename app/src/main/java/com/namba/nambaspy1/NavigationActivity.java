@@ -124,6 +124,7 @@ private  final String TAG = NavigationActivity.class.getSimpleName();
 
     void initPlaceRecyclerView(){
         nearPlaceRecyclerView = findViewById(R.id.near_recycler_view);
+        nearPlaceRecyclerView.setNestedScrollingEnabled(false);
         nearPlaceRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         placeAdapter = new PlaceAdapter(this);
         nearPlaceRecyclerView.setAdapter(placeAdapter);
@@ -196,7 +197,7 @@ private  final String TAG = NavigationActivity.class.getSimpleName();
         if (id == R.id.write_comment) {
             // Handle the camera action
         } else if (id == R.id.add_place) {
-            startActivity(new Intent(getApplicationContext(), AddPlaceActivity.class));
+            startActivity(new Intent(getApplicationContext(), AddPlaceActivity. class));
         } else if (id == R.id.lang_interface) {
 
         } else if (id == R.id.menu_setting) {
