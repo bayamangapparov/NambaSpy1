@@ -45,11 +45,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <Spinner
-                    style="@style/AppTheme2.AddPlace"
-                    android:entries="@array/categoryList"
-                    android:dropDownSelector="@color/black"
-                    android:pointerIcon="arrow"/>
+                <LinearLayout
+                    style="@style/AppTheme2.AddPlace">
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/categoryList"/>
+                </LinearLayout>
 
                 <TextView
                     android:text="Город"
@@ -57,9 +59,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <Spinner
-                    style="@style/AppTheme2.AddPlace"
-                    android:entries="@array/cityList"/>
+                <LinearLayout
+                    style="@style/AppTheme2.AddPlace">
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/cityList"/>
+                </LinearLayout>
 
                 <TextView
                     android:text="Название"
@@ -77,6 +83,7 @@
                     android:layout_height="wrap_content" />
 
                 <EditText
+                    android:inputType="textPostalAddress"
                     style="@style/AppTheme2.AddPlace"/>
 
 
@@ -110,6 +117,7 @@
                     android:layout_height="wrap_content" />
 
                 <EditText
+                    android:inputType="time"
                     style="@style/AppTheme2.AddPlace"/>
 
                 <TextView
@@ -119,6 +127,7 @@
                     android:layout_height="wrap_content" />
 
                 <EditText
+                    android:inputType="textWebEditText"
                     style="@style/AppTheme2.AddPlace"/>
 
                 <TextView
@@ -128,8 +137,23 @@
                     android:layout_height="wrap_content" />
 
                 <EditText
-                    style="@style/AppTheme2.AddPlace"/>
+                    style="@style/AppTheme2.AddPlace"
+                    android:inputType="phone"/>
             </LinearLayout>
+
+            <Button
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Опубликовать"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/cyan_500"
+                />
 
 
         </LinearLayout>

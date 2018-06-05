@@ -98,12 +98,13 @@ public class PlaceActivity extends AppCompatActivity {
     }
 
     void initAndSetPhotos(){
-        List<Integer> photos = new ArrayList<>();
+        List<String> photos = new ArrayList<>();
 
         for (int i = 0; i< 4; i++) {
-            photos.add(R.drawable.image1);
-            photos.add(R.drawable.image2);
-            photos.add(R.drawable.image3);
+            photos.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjiJTCa8t9vt147l2uIt5ch7QU9qpalIybqRuzTmN-7B9uC9Bi");
+            photos.add("http://cdn.trinixy.ru/pics3/20080620/homyak_45.jpg");
+            photos.add("https://u.tfstatic.com/restaurant_photos/542/34542/169/612/cafe-de-nice-restaurant-ad8b3.jpg");
+            photos.add("https://media-cdn.tripadvisor.com/media/photo-s/04/8e/45/77/ametist-cafe-restaurant.jpg");
         }
 
         photosAdapter.setPhotos(photos);
@@ -120,11 +121,18 @@ public class PlaceActivity extends AppCompatActivity {
     }
 
 
-    void onClickAddReviewButton(View view) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        ReviewFullscreenDialogFragment newFragment = new ReviewFullscreenDialogFragment();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        transaction.add(android.R.id.content, newFragment).addToBackStack(null).commit();
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.add_review_button:
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                ReviewFullscreenDialogFragment newFragment = new ReviewFullscreenDialogFragment();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.add(android.R.id.content, newFragment).addToBackStack(null).commit();
+                break;
+            case R.id.show_all_place_images_button:
+                startActivity(new Intent(this, GalleryActivity.class));
+        }
     }
 }

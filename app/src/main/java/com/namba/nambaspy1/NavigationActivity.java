@@ -153,12 +153,6 @@ private  final String TAG = NavigationActivity.class.getSimpleName();
         placeList.add(new Place("Фаиза", R.drawable.chay_ic));
         placeList.add(new Place("Таксым", R.drawable.chay_ic));
         placeList.add(new Place("Обед.кг", R.drawable.restaurant));
-        placeList.add(new Place("Фаиза", R.drawable.chay_ic));
-        placeList.add(new Place("Таксым", R.drawable.chay_ic));
-        placeList.add(new Place("Обед.кг", R.drawable.restaurant));
-        placeList.add(new Place("Фаиза", R.drawable.chay_ic));
-        placeList.add(new Place("Таксым", R.drawable.chay_ic));
-        placeList.add(new Place("Обед.кг", R.drawable.restaurant));
 
 
         placeAdapter.setPlaceList(placeList);
@@ -203,7 +197,6 @@ private  final String TAG = NavigationActivity.class.getSimpleName();
         if (id == R.id.write_comment) {
             // Handle the camera action
         } else if (id == R.id.add_place) {
-
             startActivity(new Intent(getApplicationContext(), AddPlaceActivity. class));
         } else if (id == R.id.lang_interface) {
 

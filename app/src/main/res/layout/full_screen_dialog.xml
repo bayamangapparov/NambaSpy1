@@ -61,6 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 android:text="Оценка"/>
 
             <LinearLayout
@@ -68,12 +69,20 @@
                 android:layout_height="wrap_content">
 
 
-                <me.zhanghai.android.materialratingbar.MaterialRatingBar
-                    android:id="@+id/reviewRatingBar"
+                <LinearLayout
+                    android:background="@drawable/frame"
+                    android:padding="8dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:stepSize="1"
-                    style="@style/Widget.MaterialRatingBar.RatingBar" />
+                    android:layout_height="wrap_content">
+
+                    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                        android:id="@+id/reviewRatingBar"
+                        app:mrb_fillBackgroundStars="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:stepSize="1"
+                        style="@style/Widget.MaterialRatingBar.RatingBar" />
+                </LinearLayout>
 
                 <!--<RatingBar
                     android:id="@+id/ratingBar"
@@ -88,6 +97,7 @@
                     android:numStars="5"
                     />-->
                 <TextView
+                    android:layout_marginBottom="4dp"
                     android:id="@+id/ratingBarStateTextView"
                     android:text="хорошо"
                     android:gravity="end|center_horizontal"
@@ -96,6 +106,7 @@
             </LinearLayout>
 
             <TextView
+                android:layout_marginBottom="4dp"
                 android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,6 +114,8 @@
 
 
             <EditText
+                android:background="@drawable/frame"
+                android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="alkgjlkjaldsfhal;jdfkjajdf;lajf;lja;j;ajdfklajglkglkaj"/>
@@ -119,6 +132,8 @@
                 android:layout_marginTop="32dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textAllCaps="false"
                 android:text="Опубликовать"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/cyan_500"

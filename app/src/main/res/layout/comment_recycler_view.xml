@@ -13,6 +13,7 @@
 
         <TextView
             android:text="Отзывы"
+            android:layout_marginTop="8dp"
             android:layout_margin="24dp"
             android:textColor="@color/black"
             android:textSize="18sp"

@@ -14,7 +14,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         app:civ_border_width="2dp"
-        app:civ_border_color="#39a7a4"/>
+        app:civ_border_color="@color/cyan_500"/>
 
     <LinearLayout
         android:orientation="vertical"

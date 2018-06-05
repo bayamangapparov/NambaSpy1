@@ -189,7 +189,8 @@
         android:weightSum="1">
 
         <Button
-            android:onClick="onClickAddReviewButton"
+            android:id="@+id/add_review_button"
+            android:onClick="onClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
